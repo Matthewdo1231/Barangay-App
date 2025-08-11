@@ -1,13 +1,15 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
-import { redirect } from 'next/navigation';
 import { NextResponse } from 'next/server'
 
-const isPublicRoute =  createRouteMatcher(["/dashboard"]);
+
 const isUserRoute = createRouteMatcher([""])
-const isAdminRoute = createRouteMatcher([""])
+const isAdminRoute = createRouteMatcher(["/admin(.*)"]);
 
 export default clerkMiddleware(async (auth,req) => {  
-    const {userId , redirectToSignIn} = await auth();
+    
+      const {userId , redirectToSignIn} = await auth();
+
+  
       const url = req.nextUrl.clone();
        url.pathname = "/dashboard";
 
@@ -23,12 +25,13 @@ export default clerkMiddleware(async (auth,req) => {
 
 
     if(req.nextUrl.pathname === "/"){
-    
       return NextResponse.redirect(url);
     }   
 
     return NextResponse.next();
 })
+
+
 
 export const config = {
   matcher: [

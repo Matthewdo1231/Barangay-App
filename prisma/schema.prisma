@@ -27,3 +27,10 @@ model User {
   role      Roles    @default(user)
   createdAt DateTime @default(now())
 }
+
+model News {
+  id        String   @id @default(cuid())
+  caption   String
+  imageUrl  String
+  createdAt DateTime @default(now())
+}
