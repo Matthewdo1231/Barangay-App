@@ -20,12 +20,13 @@ enum Roles {
 }
 
 model User {
-  id        String   @id // Clerk userId
-  firstName String
-  lastName  String
-  email     String   @unique
-  role      Roles    @default(user)
-  createdAt DateTime @default(now())
+  id         String      @id // Clerk userId
+  firstName  String
+  lastName   String
+  email      String      @unique
+  role       Roles       @default(user)
+  createdAt  DateTime    @default(now())
+  applicants Applicant[]
 }
 
 model News {
@@ -33,4 +34,26 @@ model News {
   caption   String
   imageUrl  String
   createdAt DateTime @default(now())
+}
+
+model JobPosting {
+  id          Int           @id @default(autoincrement())
+  title       String
+  address     String
+  description String
+  salary      Int
+  createdAt   DateTime      @default(now())
+  applicants  Applicant[]
+}
+
+model Applicant {
+  id         Int        @id @default(autoincrement())
+  jobId      Int
+  userId     String
+  name       String
+  resumeUrl  String
+  appliedAt  DateTime   @default(now())
+
+  job        JobPosting @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  user       User       @relation(fields: [userId], references: [id])
 }

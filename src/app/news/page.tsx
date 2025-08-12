@@ -9,7 +9,7 @@ type News = {
 
 async function getNews(): Promise<News[]> {
   const checkRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/news/api`, {
-    cache: "no-store", // it will always the latest data
+    cache: "no-store", // it will always show the latest data
   });
   if (!checkRes.ok) throw new Error("Failed to fetch news");
   return checkRes.json();

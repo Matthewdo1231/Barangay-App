@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 
 const isUserRoute = createRouteMatcher([""])
-const isAdminRoute = createRouteMatcher(["/admin(.*)"]);
+const isAdminRoute = createRouteMatcher(["/admin","/admin(.*)"]);
 
 export default clerkMiddleware(async (auth,req) => {  
     

@@ -6,9 +6,7 @@ export default function SuccessMessage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const success = searchParams.get("success");
-
   const [show, setShow] = useState(false);
-
   useEffect(() => {
     if (success) {
       setShow(true);
