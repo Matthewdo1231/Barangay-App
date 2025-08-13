@@ -1,12 +1,16 @@
 "use server";
 
-import { PrismaClient } from "@/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { requireAdmin } from "@/lib/requireAdmin";
 
  const prisma = new PrismaClient(); 
 
 export async function createJobPosting(formData: FormData) {
+
+  const adminId = await requireAdmin();
+
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
   const address = formData.get("address") as string;
@@ -29,6 +33,9 @@ export async function createJobPosting(formData: FormData) {
 }
 
 export async function updateJobPosting(formData: FormData) {
+
+   const adminId = await requireAdmin();
+   
   const id = Number(formData.get("id"));
   const title = (formData.get("title") as string)?.trim();
   const address = (formData.get("address") as string)?.trim();

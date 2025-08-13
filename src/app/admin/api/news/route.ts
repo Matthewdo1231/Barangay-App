@@ -1,14 +1,18 @@
 "use server";
 
-import { PrismaClient } from "@/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import cloudinary from "@/lib/cloudinary";
 import { UploadApiResponse, UploadApiErrorResponse } from "cloudinary";
+import { requireAdmin } from "@/lib/requireAdmin";
 
 const prisma = new PrismaClient();
 
 export async function createNews(formData: FormData) {
+
+  const adminId = await requireAdmin();
+
   const caption = formData.get("caption") as string;
   const imageFile = formData.get("image") as File; 
 

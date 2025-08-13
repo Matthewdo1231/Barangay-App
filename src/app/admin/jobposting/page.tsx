@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 import JobPostingCard from "./_component/JobPostingCard";
 import SuccessMessage from "../news/create/_component/SuccessMessage";
 

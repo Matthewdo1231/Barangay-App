@@ -1,12 +1,16 @@
 "use server";
 import { PrismaClient } from "@/generated/prisma";
+import { requireAdmin } from "@/lib/requireAdmin";
 
 const prisma = new PrismaClient();
 
 export async function DELETE(
+
   req: Request,
   { params }: { params: { id: string } }
 ) {
+
+    const adminId = await requireAdmin();
   try {
     const { id } = params;
 
