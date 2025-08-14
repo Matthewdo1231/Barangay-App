@@ -1,43 +1,36 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
-import { NextResponse } from 'next/server'
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
 
+const isUserRoute = createRouteMatcher(["/request(.*)"]);
+const isAdminRoute = createRouteMatcher(["/admin", "/admin(.*)"]);
 
-const isUserRoute = createRouteMatcher([""])
-const isAdminRoute = createRouteMatcher(["/admin","/admin(.*)"]);
+export default clerkMiddleware(async (auth, req) => {
+  const { userId, redirectToSignIn, sessionClaims } = await auth();
+  const attemptedUrl = req.nextUrl.pathname + req.nextUrl.search;
 
-export default clerkMiddleware(async (auth,req) => {  
-    
-      const {userId , redirectToSignIn} = await auth();
+  const dashboardUrl = req.nextUrl.clone();
+  dashboardUrl.pathname = "/dashboard";
 
-  
-      const url = req.nextUrl.clone();
-       url.pathname = "/dashboard";
+  // If not logged in and trying to access admin or user routes   save attempted route & redirect to login
+  if (!userId && (isAdminRoute(req) || isUserRoute(req))) {
+    return redirectToSignIn({ returnBackUrl: attemptedUrl });
+  }
 
-       if(!userId && isAdminRoute(req) || !userId && isUserRoute(req)){        //if not logged in an try to acces admin and user route
-          return redirectToSignIn();
-       }
+  // If logged in but not admin reroute to dashboard
+  if (userId && isAdminRoute(req) && sessionClaims?.metadata?.role !== 'admin') {
+    return NextResponse.redirect(dashboardUrl);
+  }
 
-       if(userId){
-          if(isAdminRoute(req) && (await auth()).sessionClaims?.metadata?.role !== 'admin'){    //if logged in and user type is not "admin"
-            return NextResponse.redirect(url);
-          }
-       }
+  if (req.nextUrl.pathname === "/") {
+    return NextResponse.redirect(dashboardUrl);
+  }
 
-
-    if(req.nextUrl.pathname === "/"){
-      return NextResponse.redirect(url);
-    }   
-
-    return NextResponse.next();
-})
-
-
+  return NextResponse.next();
+});
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
     '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
     '/(api|trpc)(.*)',
   ],
-}
+};
