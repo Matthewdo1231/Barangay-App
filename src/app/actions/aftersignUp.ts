@@ -1,23 +1,23 @@
-"use server";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient()
+  "use server";
+  import { PrismaClient } from "@prisma/client";
+  const prisma = new PrismaClient()
 
-export async function saveUser({
-  id,
-  email,
-  firstName,
-  lastName
-}: {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName:string
-}) {
-  await prisma.user.upsert({
-    where: { id },
-    update: {},
-    create: { id, email, firstName, lastName },
-  });
-}
+  export async function saveUser({
+    id,
+    email,
+    firstName,
+    lastName
+  }: {
+    id: string;
+    email: string;
+    firstName: string;
+    lastName:string
+  }) {
+    await prisma.user.upsert({
+      where: { id },
+      update: {},
+      create: { id, email, firstName, lastName },
+    });
+  }
 
 
