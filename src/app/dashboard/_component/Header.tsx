@@ -1,8 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useUser, SignOutButton, SignInButton } from "@clerk/nextjs";
+
 
 export default function Header() {
+    const { user, isSignedIn } = useUser();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -36,7 +39,15 @@ export default function Header() {
           <li className="hover:text-green-600 cursor-pointer">News</li>
           <li className="hover:text-green-600 cursor-pointer">Request</li>
           <li className="hover:text-green-600 cursor-pointer">Find Jobs</li>
-          <li className="hover:text-green-600 cursor-pointer">Login</li>
+           {isSignedIn ? (
+            <div className="flex items-center gap-2">
+              <span>Welcome, {user?.firstName}</span>
+              <SignOutButton />
+            </div>
+          ) : (
+            <SignInButton mode="modal" />
+        )}
+      
         </ul>
 
         {/* Mobile Hamburger */}
