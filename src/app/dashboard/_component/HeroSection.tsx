@@ -12,7 +12,7 @@ export default function HeroSection() {
         className="absolute inset-0 bg-cover bg-center opacity-20"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80')",
+          "url('/forest-5524525_1280.jpg')",
         }}
       />
 
