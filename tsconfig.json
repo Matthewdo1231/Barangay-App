@@ -22,6 +22,14 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/ui/Carousel.jsx", "src/components/ui/Carousel.jsx"],
+  "exclude": ["node_modules"],
+   "baseUrl": ".",
+    "paths": {
+      "Components/*": ["src/app/component/*"]
+    },
+   "jsx": "react-jsx", // or "react"
+    "lib": ["dom", "esnext"],
+    "types": ["react"]
+  
 }
