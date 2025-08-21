@@ -179,6 +179,7 @@ export default function Carousel({
       };
 
   return (
+    <section className="max-w-5xl mx-auto px-4 py-10">
     <div
       ref={containerRef}
         className={`relative overflow-hidden p-4 ${
@@ -278,5 +279,6 @@ export default function Carousel({
         </div>
       </div>
     </div>
+    </section> 
   );
 }

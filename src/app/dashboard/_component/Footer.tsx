@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-green-700 text-white">
+    <footer className="bg-[#233353] text-white">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo + About */}
         <div>
@@ -34,7 +34,7 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Contact Us</h4>
           <ul className="space-y-2 text-sm">
-            <li>📍 Barangay Green Hub, City, Province</li>
+            <li>📍 Government Hub, City, Province</li>
             <li>📞 (123) 456-7890</li>
             <li>✉️ info@barangaygreenhub.gov.ph</li>
             <li>🕒 Mon-Fri 8:00 AM - 5:00 PM</li>
@@ -55,7 +55,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-700 py-4 text-center text-sm text-white">
-        © {new Date().getFullYear()} Barangay Green Hub. All rights reserved.
+        © {new Date().getFullYear()} Government Hub. All rights reserved.
       </div>
     </footer>
   );

@@ -13,17 +13,17 @@ import {
 export default function HeroSection() {
   return (
     <section className="relative text-white overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-4 py-16 flex flex-col items-start">
+      <div className="relative max-w-7xl mx-auto px-4 py-28 mb-48 flex flex-col items-start">
         {/* Title */}
         <motion.h2
-          className="text-5xl md:text-5xl font-bold mb-2"
+          className="text-5xl md:text-6xl font-bold mb-2"
           style={{ fontFamily: '"EB Garamond", serif' }}
           initial={{ x: -60, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           Welcome to{" "}
-          <span className="text-white text-5xl">Government Web</span>
+          <span className="text-white text-6xl">Government Web</span>
         </motion.h2>
 
         {/* Artistic Resident Portal */}
@@ -51,19 +51,16 @@ export default function HeroSection() {
         {/* SIGNED OUT → Show Create Account + Login */}
         <SignedOut>
           <motion.div
-            className="w-full max-w-sm border-2 border-white rounded-xl p-6 text-center bg-transparent"
+            className="w-full max-w-sm border-2 border-white rounded-xl p-6 text-center text-2xl bg-transparent hover:border-[#233353] hover:bg-white hover:text-[#233353] hover:cursor-pointer"
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
           >
-            <h3
-              className="text-xl font-semibold text-white cursor-pointer"
-              style={{ fontFamily: '"EB Garamond", serif' }}
-            >
-              <SignUpButton mode="modal">
-                Create Your Gov Account
-              </SignUpButton>
-            </h3>
+        
+          <SignUpButton mode="modal">
+              Create Your Gov Account
+          </SignUpButton>
+
           </motion.div>
 
           <motion.p

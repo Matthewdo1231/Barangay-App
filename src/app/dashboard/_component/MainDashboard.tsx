@@ -8,7 +8,7 @@ import Header from "./Header";
 import HeroSection from "./HeroSection";
 import FeaturesGrid from "./FeaturesGrid";
 import StatsSection from "./StatsSection";
-import Carousel from "@/components/ui/Carousel";
+import CandidatesCarousel from "./CandidateCarousel";
 
 
 export default async function MainDashboard() {
@@ -27,26 +27,25 @@ export default async function MainDashboard() {
   }
 
   return (
-    <div className="relative min-h-screen flex flex-col text-white">
+    <div className="relative h-[64rem] flex flex-col text-white">
       {/* Background applied to parent */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-80 -z-10"
+        className="absolute inset-0 bg-cover bg-center opacity-100 -z-10"
         style={{
           backgroundImage: "url('/forest-5524525_1280.jpg')",
         }}
       />
 
-      {/* Overlay tint (optional, makes text readable) */}
-      <div className="absolute inset-0 bg-green-900/50 -z-10" />
-
+     <div className="absolute inset-0 bg-blue-900/25 -z-10" />
+ 
       {/* Header */}
       <Header />
 
       {/* Main sections */}
       <main className="flex-1">
         <HeroSection />
+        <CandidatesCarousel/>
         <FeaturesGrid />
-        <Carousel/>
         <StatsSection />
       </main>
 
