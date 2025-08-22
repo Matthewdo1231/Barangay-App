@@ -1,18 +1,19 @@
 "use client";
 
 import { useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { RefreshCw } from "lucide-react";
 
-export default function RefreshButton() {
-  const router = useRouter();
+export default function RefreshButton({ onRefresh, loading }: { onRefresh: () => Promise<void>; loading: boolean; }) {
   const [isPending, startTransition] = useTransition();
 
   return (
     <button
-      onClick={() => startTransition(() => router.refresh())}
-      className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
+      onClick={onRefresh}
+      disabled={loading}
+      className="p-2 rounded-lg border border-gray-300 hover:bg-gray-100 disabled:opacity-50"
+      aria-label="Refresh"
     >
-      {isPending ? "Refreshing..." : "Refresh"}
+      <RefreshCw className={`h-5 w-5 ${loading ? "animate-spin" : ""}`} />
     </button>
   );
 }
