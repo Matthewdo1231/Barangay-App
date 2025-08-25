@@ -9,6 +9,7 @@ import HeroSection from "./HeroSection";
 import FeaturesGrid from "./FeaturesGrid";
 import StatsSection from "./StatsSection";
 import CandidatesCarousel from "./CandidateCarousel";
+import RequestPopup from "./RequestPopup";
 
 
 export default async function MainDashboard() {

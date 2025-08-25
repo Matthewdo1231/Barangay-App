@@ -2,8 +2,9 @@
 
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Bell, FileText, Briefcase, Users } from "lucide-react";
+import { Bell, FileText, Briefcase, Users, Link } from "lucide-react";
 import { motion } from "framer-motion";
+import RequestPopup from "./RequestPopup";
 
 export default function FeaturesGrid() {
   return (
@@ -34,23 +35,7 @@ export default function FeaturesGrid() {
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-4"
         >
           {/* Submit Request */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="h-full"
-          >
-            <Card className="h-full shadow-sm hover:shadow-md hover:bg-[#233353] hover:cursor-pointer transition-colors duration-500 ease-in-out group">
-              <CardContent className="p-3 flex flex-col h-full">
-                <FileText className="h-5 w-5 text-[#233353] mb-2 transition-colors duration-500 group-hover:text-white" />
-                <h3 className="font-medium text-base mb-1 text-gray-800 transition-colors duration-500 group-hover:text-white">
-                  Submit Request
-                </h3>
-                <p className="text-xs text-gray-600 transition-colors duration-500 group-hover:text-gray-100">
-                  Document requests, permits, and certificates
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
+          <RequestPopup/>
 
           {/* Find Jobs */}
           <motion.div

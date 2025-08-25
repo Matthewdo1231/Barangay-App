@@ -4,7 +4,6 @@ import { useTransition } from "react";
 import { RefreshCw } from "lucide-react";
 
 export default function RefreshButton({ onRefresh, loading }: { onRefresh: () => Promise<void>; loading: boolean; }) {
-  const [isPending, startTransition] = useTransition();
 
   return (
     <button
