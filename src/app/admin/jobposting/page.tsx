@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client";
 import JobPostingCard from "./_component/JobPostingCard";
 import SuccessMessage from "../news/create/_component/SuccessMessage";
 
+export const dynamic = "force-dynamic";
+
 interface JobPostingType {
   id: number;
   title: string;
@@ -10,6 +12,7 @@ interface JobPostingType {
   salary:number
   createdAt: Date;
 }
+
 
 export type JobPostingCardProps = {
   job: JobPostingType;
