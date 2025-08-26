@@ -1,5 +1,5 @@
 import SuccessMessage from "./_component/SuccessMessage";
-import { createNews } from "../../api/news/route";
+import { createNews } from "../../api/news/action";
 
 export default function CreateNewsFormPage() {
   return (
