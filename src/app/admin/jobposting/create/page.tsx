@@ -1,5 +1,5 @@
 import SuccessMessage from "../../news/create/_component/SuccessMessage";  
-import { createJobPosting } from "../../api/jobs/[id]/route";
+import { createJobPosting } from "../../api/jobs/[id]/action";
 
 export default function CreateJobPostingFormPage() {
   return (

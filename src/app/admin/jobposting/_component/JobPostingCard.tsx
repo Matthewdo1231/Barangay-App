@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { updateJobPosting } from "../../api/jobs/[id]/route";
+import { updateJobPosting } from "../../api/jobs/[id]/action";
 import { JobPostingCardProps } from "../page";
 
 export default function JobPostingCard({ job }: JobPostingCardProps) {
