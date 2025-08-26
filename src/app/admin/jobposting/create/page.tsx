@@ -1,9 +1,11 @@
 import SuccessMessage from "../../news/create/_component/SuccessMessage";  
 import { createJobPosting } from "../../api/jobs/[id]/action";
+import { Suspense } from "react";
 
 export default function CreateJobPostingFormPage() {
   return (
-    <>
+   
+      <Suspense fallback={<div>Loading...</div>}>
       <form
         action={createJobPosting}
         className="space-y-4"
@@ -49,6 +51,7 @@ export default function CreateJobPostingFormPage() {
       </form>
 
       <SuccessMessage />
-    </>
+    </Suspense>
+     
   );
 }
