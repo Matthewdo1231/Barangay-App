@@ -1,35 +1,43 @@
 import SuccessMessage from "@/app/admin/news/create/_component/SuccessMessage";
+import { createBarangayBusinessClearanceRequest } from "./action";
 import CommonRequestFields from "../component/CommonRequestFields";
-import { createCertificateResidencyRequest } from "./action";
 
-export default function CertificateResidencyPage() {
+export default function BarangayBusinessClearancePage() {
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow rounded">
       <h1 className="text-2xl font-bold mb-4">
-        Certificate of Residency Request
+        Barangay Business Clearance Request
       </h1>
 
-      <form action={createCertificateResidencyRequest} className="space-y-4">
-        {/* ✅ Shared fields */}
+      <form action={createBarangayBusinessClearanceRequest} className="space-y-4">
+        
         <CommonRequestFields />
 
-        {/* ✅ Unique fields for Certificate of Residency */}
+        {/* Business-specific fields */}
         <div>
-          <label className="block font-medium">Years of Residency</label>
+          <label className="block font-medium">Business Name</label>
           <input
-            type="number"
-            name="yearsOfResidency"
+            type="text"
+            name="businessName"
             required
-            min="0"
             className="w-full border p-2 rounded"
           />
         </div>
 
         <div>
-          <label className="block font-medium">Purpose</label>
+          <label className="block font-medium">Business Address</label>
+          <textarea
+            name="businessAddress"
+            required
+            className="w-full border p-2 rounded"
+          />
+        </div>
+
+        <div>
+          <label className="block font-medium">Nature of Business</label>
           <input
             type="text"
-            name="purpose"
+            name="natureOfBusiness"
             required
             className="w-full border p-2 rounded"
           />
