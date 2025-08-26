@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import SuccessMessage from "@/app/admin/news/create/_component/SuccessMessage";
 import { createBarangayBusinessClearanceRequest } from "./action";
 import CommonRequestFields from "../component/CommonRequestFields";
+
+
 
 export default function BarangayBusinessClearancePage() {
   return (

@@ -131,7 +131,7 @@ export default function CandidatesCarousel() {
 
       {/* Dots */}
       <div className="flex justify-center mt-8 space-x-3">
-        {candidates.map((c, idx) => (
+        {candidates.map((c:any, idx:any) => (
           <motion.button
             key={c.id}
             className={`h-4 w-4 rounded-full transition-colors ${
