@@ -17,7 +17,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Custom link styles with animated underline
   const linkClass =
     "relative transition duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[3px] after:bg-orange-500 after:transition-all after:duration-300 hover:after:w-full";
 
@@ -91,9 +90,7 @@ export default function Header() {
               <li key={index}>
                 <Link
                   href={
-                    item === "Home"
-                      ? "/"
-                      : `/${item.toLowerCase().replace(" ", "")}`
+                    item === "Home" ? "/" : item ==="Find Jobs" ? "jobposting"  : `/${item.toLowerCase().replace(" ", "")}`
                   }
                   className={linkClass}
                 >

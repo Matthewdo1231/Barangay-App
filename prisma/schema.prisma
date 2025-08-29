@@ -47,15 +47,18 @@ model JobPosting {
 }
 
 model Applicant {
-  id         Int        @id @default(autoincrement())
-  jobId      Int
-  userId     String
-  name       String
-  resumeUrl  String
-  appliedAt  DateTime   @default(now())
+  id          Int        @id @default(autoincrement())
+  jobId       Int
+  userId      String
+  name        String
+  email       String
+  phoneNumber String
+  address     String
+  resumeUrl   String
+  appliedAt   DateTime   @default(now())
 
-  job        JobPosting @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  user       User       @relation(fields: [userId], references: [id])
+  job   JobPosting @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  user  User       @relation(fields: [userId], references: [id])
 }
 
 enum RequestType {

@@ -44,6 +44,6 @@ export async function createNews(formData: FormData) {
     data: { caption, imageUrl: uploadResult.secure_url },
   });
 
-  revalidatePath("/news");
-  redirect("/news/create?success=1");
+  revalidatePath("/admin/news");
+  redirect("/admin/news/create?success=1");
 }
